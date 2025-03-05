@@ -1,0 +1,26 @@
+---
+- name: Simple Debug Playbook
+  hosts: test  # Or your target hosts
+  gather_facts: false # set to true if you need facts
+
+  tasks:
+    - name: Set a variable
+      set_fact:
+        my_variable: "Hello, Ansible Debug!"
+
+    - name: Debug a variable
+      debug:
+        msg: "The value of my_variable is: {{ my_variable }}"
+
+    - name: Debug a static message
+      debug:
+        msg: "This is a static debug message."
+
+    - name: Debug a complex variable
+      debug:
+        var: ansible_version # Example: debugging the Ansible version. Change as needed.
+
+    - name: Conditional debug
+      debug:
+        msg: "This message will only appear if a condition is met."
+      when: my_variable == "Hello, Ansible Debug!"
